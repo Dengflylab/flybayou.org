@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -15,22 +14,33 @@
     box-sizing:border-box;
 }
 
+html{
+    scroll-behavior:smooth;
+}
+
 body{
     font-family:Arial, Helvetica, sans-serif;
     line-height:1.6;
     color:#333;
+    background:#ffffff;
 }
 
 header{
     background:linear-gradient(135deg,#003366,#0077b6);
     color:white;
     text-align:center;
-    padding:90px 20px;
+    padding:60px 20px;
+}
+
+.logo{
+    width:220px;
+    max-width:90%;
+    margin-bottom:20px;
 }
 
 header h1{
     font-size:3rem;
-    margin-bottom:10px;
+    margin-bottom:15px;
 }
 
 header p{
@@ -106,11 +116,35 @@ nav a:hover{
     font-weight:bold;
 }
 
+.community-map{
+    width:100%;
+    max-width:900px;
+    display:block;
+    margin:0 auto 40px auto;
+    border-radius:12px;
+    box-shadow:0 4px 15px rgba(0,0,0,0.15);
+}
+
+.search-box{
+    width:100%;
+    max-width:500px;
+    display:block;
+    margin:0 auto 30px auto;
+    padding:12px;
+    border:1px solid #ccc;
+    border-radius:8px;
+    font-size:16px;
+}
+
 footer{
     background:#002244;
     color:white;
     text-align:center;
-    padding:30px;
+    padding:40px 20px;
+}
+
+footer a{
+    color:#87cefa;
 }
 
 @media(max-width:768px){
@@ -119,26 +153,35 @@ header h1{
     font-size:2rem;
 }
 
+.logo{
+    width:150px;
+}
+
 }
 
 </style>
-
 </head>
 
 <body>
 
 <header>
-    <h1>Fly Bayou</h1>
-    <p>A Community of Drosophila Researchers Across the Southern United States</p>
+
+<img src="Flybayoulogo.png" alt="Fly Bayou Logo" class="logo">
+
+<h1>Fly Bayou</h1>
+
+<p>
+A Community of Drosophila Researchers Across the Southern United States
+</p>
+
 </header>
 
 <nav>
 <ul>
-<li>#aboutAbout</a></li>
-<li>#communityCommunity</a></li>
-<li>#eventsEvents</a></li>
-<li>#contactContact</a></li>
-</ul>
+<li><a href="#about">About</a></li>
+<li><mmunity</a></li>
+<li><eventsEvents</a></li>
+<li><a href="#contact">Contact</a>
 </nav>
 
 <section id="about" class="container">
@@ -146,11 +189,10 @@ header h1{
 <h2 class="section-title">About Fly Bayou</h2>
 
 <p>
-Fly Bayou began as a local Drosophila research meeting connecting laboratories
-in Louisiana. Since its founding in 2020, the community has expanded to more than
-30 laboratories across multiple states. Monthly virtual meetings provide
-opportunities to share discoveries, discuss new techniques, and foster scientific
-collaboration.
+From a small local fly meeting that began in Louisiana in 2020,
+Fly Bayou has grown into a vibrant regional network of Drosophila
+researchers spanning multiple states. Monthly virtual meetings promote
+scientific discussion, collaboration, trainee development, and networking.
 </p>
 
 <br>
@@ -158,7 +200,7 @@ collaboration.
 <h3>Current Organizer</h3>
 
 <p>
-Dr. Jun-Yuan Ji<br>
+<strong>Dr. Jun-Yuan Ji</strong><br>
 Tulane University School of Medicine<br>
 <a href="mailto:ji@tulane.edu">ji@tulane.edu</a>
 </p>
@@ -180,9 +222,14 @@ Tulane University School of Medicine<br>
 
 <h2 class="section-title">Our Research Community</h2>
 
-<p style="text-align:center;margin-bottom:30px;">
-Participating laboratories across the Fly Bayou network.
-</p>
+<img
+src="2025 - 08.jpg
+
+<input
+type="text"
+id="searchBox"
+class="search-box"
+placeholder="Search by PI, institution, or state">
 
 <div id="labList" class="cards"></div>
 
@@ -242,6 +289,14 @@ communication, and community.
 <br>
 
 <p>
+<a href="https://github.com/Dengflylab/flybayou.org" target="_blank">
+GitHub Repository
+</a>
+</p>
+
+<br>
+
+<p>
 © 2026 Fly Bayou
 </p>
 
@@ -249,53 +304,5 @@ communication, and community.
 
 <script>
 
-fetch('labs.csv')
-.then(response => response.text())
-.then(text => {
-
-    const rows = text.trim().split('\n');
-    rows.shift();
-
-    const container = document.getElementById('labList');
-
-    rows.forEach(row => {
-
-        const cols = row.split(',');
-
-        const state = cols[0] || '';
-        const pi = cols[1] || '';
-        const institution = cols[2] || '';
-        const website = cols.slice(3).join(',');
-
-        const card = document.createElement('div');
-        card.className = 'card';
-
-        let html = `
-            <h3>${pi}</h3>
-            <p><strong>${institution}</strong></p>
-            <p>${state}</p>
-        `;
-
-        if (website && website.trim() !== '') {
-            html += `
-            <p>
-            <a href="${website}" target="_blank">
-            Visit Lab Website
-            </a>
-            </p>`;
-        }
-
-        card.innerHTML = html;
-
-        container.appendChild(card);
-    });
-
-})
-.catch(error => {
-    console.error(error);
-});
-
-</script>
-
-</body>
-</html>
+const labList = document.getElementById("labList");
+const searchBox = document.getElementById("
