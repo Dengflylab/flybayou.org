@@ -234,7 +234,15 @@ class="search-box"
 placeholder="Search by PI, institution, or state">
 
 <div id="labList" class="cards"></div>
-
+    
+<br><br>
+    
+<h3 style="text-align:center;color:#003366;">
+Community Directory
+</h3>
+    
+<div id="stateDirectory"></div>
+    
 </section>
 
 <section id="events" class="container">
@@ -306,5 +314,138 @@ GitHub Repository
 
 <script>
 
+const labList = document.getElementById("labList");
+const stateDirectory = document.getElementById("stateDirectory");
+const searchBox = document.getElementById("searchBox");
+
+let allLabs = [];
+
+fetch("labs.csv")
+.then(response => response.text())
+.then(text => {
+
+    const rows = text.trim().split("\n");
+    rows.shift();
+
+    allLabs = rows.map(row => {
+
+        const cols = row.split(",");
+
+        return {
+            state: cols[0] || "",
+            pi: cols[1] || "",
+            institution: cols[2] || "",
+            website: cols.slice(3).join(",")
+        };
+    });
+
+    renderCards(allLabs);
+    renderDirectory(allLabs);
+
+});
+
+function renderCards(labs){
+
+    labList.innerHTML = "";
+
+    labs.forEach(lab => {
+
+        const card = document.createElement("div");
+        card.className = "card";
+
+        card.innerHTML = `
+            <h3>${lab.pi}</h3>
+            <p><strong>${lab.institution}</strong></p>
+            <p>${lab.state}</p>
+            ${
+                lab.website
+                ? `<p><a href="${lab.website}" target="_blank">Visit Lab Website</a></p>`
+                : ""
+            }
+        `;
+
+        labList.appendChild(card);
+    });
+}
+
+function renderDirectory(labs){
+
+    stateDirectory.innerHTML = "";
+
+    const groups = {};
+
+    labs.forEach(lab => {
+
+        if(!groups[lab.state]){
+            groups[lab.state] = [];
+        }
+
+        groups[lab.state].push(lab);
+
+    });
+
+    Object.keys(groups)
+        .sort()
+        .forEach(state => {
+
+        const section = document.createElement("div");
+
+        section.style.marginBottom = "30px";
+
+        section.innerHTML = `
+            <h3 style="color:#003366;margin-bottom:10px;">
+                ${state}
+            </h3>
+        `;
+
+        const ul = document.createElement("ul");
+
+        groups[state].forEach(lab => {
+
+            const li = document.createElement("li");
+
+            if(lab.website){
+
+                li.innerHTML = `
+                    <a href="${lab.website}" target="_blank">
+                        ${lab.pi}
+                    </a>
+                    , ${lab.institution}
+                `;
+
+            } else {
+
+                li.innerHTML = `
+                    ${lab.pi}, ${lab.institution}
+                `;
+            }
+
+            ul.appendChild(li);
+
+        });
+
+        section.appendChild(ul);
+
+        stateDirectory.appendChild(section);
+
+    });
+
+}
+
+searchBox.addEventListener("input", function(){
+
+    const value = this.value.toLowerCase();
+
+    const filtered = allLabs.filter(lab =>
+        lab.pi.toLowerCase().includes(value) ||
+        lab.institution.toLowerCase().includes(value) ||
+        lab.state.toLowerCase().includes(value)
+    );
+
+    renderCards(filtered);
+
+});
+
+</script>
 const labList = document.getElementById("labList");
 const searchBox = document.getElementById("
