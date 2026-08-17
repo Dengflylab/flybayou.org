@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Fly Bayou | Drosophila Research Community</title>
+<title>Fly Bayou</title>
 
 <style>
 
@@ -20,15 +20,15 @@ html{
 
 body{
     font-family:Arial, Helvetica, sans-serif;
-    line-height:1.6;
     color:#333;
+    line-height:1.6;
 }
 
 header{
-    background:linear-gradient(135deg,#003366,#0077b6);
+    background:linear-gradient(135deg,#004b87,#0077b6);
     color:white;
     text-align:center;
-    padding:60px 20px;
+    padding:50px 20px;
 }
 
 .logo{
@@ -42,25 +42,15 @@ header h1{
     margin-bottom:10px;
 }
 
-header p{
-    font-size:1.2rem;
-}
-
 nav{
     background:#002244;
-    position:sticky;
-    top:0;
-    z-index:1000;
 }
 
 nav ul{
+    list-style:none;
     display:flex;
     justify-content:center;
     align-items:center;
-    list-style:none;
-    flex-wrap:wrap;
-    margin:0;
-    padding:0;
 }
 
 nav li{
@@ -68,12 +58,11 @@ nav li{
 }
 
 nav a{
-    display:block;
     color:white;
     text-decoration:none;
-    padding:15px 25px;
-    font-weight:600;
-    transition:background 0.2s ease;
+    display:block;
+    padding:16px 24px;
+    font-weight:bold;
 }
 
 nav a:hover{
@@ -88,28 +77,29 @@ nav a:hover{
 
 .section-title{
     text-align:center;
-    margin-bottom:40px;
     color:#003366;
+    margin-bottom:30px;
 }
 
 .highlight{
-    background:#f5f9fc;
+    background:#f4f8fb;
 }
 
 .community-map{
     width:100%;
-    max-width:900px;
+    max-width:1400px;
     display:block;
-    margin:0 auto 40px auto;
-    border-radius:12px;
-    box-shadow:0 4px 15px rgba(0,0,0,0.15);
+    margin:auto;
+    margin-bottom:30px;
+    border-radius:10px;
+    box-shadow:0 4px 15px rgba(0,0,0,.15);
 }
 
 .search-box{
     width:100%;
     max-width:500px;
     display:block;
-    margin:0 auto 30px auto;
+    margin:20px auto;
     padding:12px;
     border:1px solid #ccc;
     border-radius:8px;
@@ -126,12 +116,7 @@ nav a:hover{
     background:white;
     border-radius:12px;
     padding:20px;
-    box-shadow:0 2px 10px rgba(0,0,0,0.1);
-    transition:.2s;
-}
-
-.card:hover{
-    transform:translateY(-4px);
+    box-shadow:0 2px 10px rgba(0,0,0,.1);
 }
 
 .card h3{
@@ -140,8 +125,8 @@ nav a:hover{
 }
 
 .card a{
-    color:#0077b6;
     text-decoration:none;
+    color:#0077b6;
     font-weight:bold;
 }
 
@@ -149,11 +134,7 @@ footer{
     background:#002244;
     color:white;
     text-align:center;
-    padding:40px 20px;
-}
-
-footer a{
-    color:#87cefa;
+    padding:30px;
 }
 
 @media(max-width:768px){
@@ -163,7 +144,11 @@ header h1{
 }
 
 .logo{
-    width:150px;
+    width:160px;
+}
+
+nav ul{
+    flex-wrap:wrap;
 }
 
 }
@@ -186,12 +171,11 @@ A Community of Drosophila Researchers Across the Southern United States
 </header>
 
 <nav>
-    <ul>
-        <li>#aboutAbout</a></li>
-        <li>#communityCommunity</a></li>
-        <li>#eventsEvents</a></li>
-        <li>#contactContact</a></li>
-    </ul>
+<ul>
+<li><a href="#about">About</a></li>
+<li><mmunity</a></li>
+<li><eventsEvents</a></li>
+<li><a href="#contact">Contact</l>
 </nav>
 
 <section id="about" class="container">
@@ -199,7 +183,7 @@ A Community of Drosophila Researchers Across the Southern United States
 <h2 class="section-title">About Fly Bayou</h2>
 
 <p>
-From a small, local joint fly meeting that started in the New Orleans and Baton Rouge area in 2020, Fly Bayou has grown into a regional network of Drosophila researchers spanning multiple states. Monthly virtual meetings provide opportunities to present research, exchange ideas, build collaborations, and support trainees throughout the community.
+From a small local fly meeting started in Louisiana in 2020, Fly Bayou has grown into a vibrant community of Drosophila researchers spanning multiple states. Monthly virtual meetings promote scientific exchange, collaboration, trainee development, and networking.
 </p>
 
 <br>
@@ -207,7 +191,7 @@ From a small, local joint fly meeting that started in the New Orleans and Baton 
 <h3>Current Organizer</h3>
 
 <p>
-<strong>Dr. Jun-Yuan Ji</strong><br>
+Dr. Jun-Yuan Ji<br>
 Tulane University School of Medicine<br>
 <a href="mailto:ji@tulane.edu">ji@tulane.edu</a>
 </p>
@@ -229,9 +213,11 @@ Tulane University School of Medicine<br>
 
 <h2 class="section-title">Our Research Community</h2>
 
-<img src="map.jpg" alt="Fly id="searchBox"
+<img src="map.jpg"
+     alt
+id="searchBox"
 class="search-box"
-placeholder="Search by PI, institution, or state">
+placeholder="Search by PI, Institution, or State">
 
 <div id="labList" class="cards"></div>
 
@@ -273,7 +259,6 @@ Interested in joining Fly Bayou or presenting at an upcoming meeting?
 <br>
 
 <p>
-Email:
 <a href="mailto:ji@tulane.edu">ji@tulane.edu</a>
 </p>
 
@@ -289,9 +274,7 @@ Connecting Drosophila researchers through collaboration, communication, and comm
 
 <br>
 
-<p>
-© 2026 Fly Bayou
-</p>
+<p>© 2026 Fly Bayou</p>
 
 </footer>
 
@@ -319,6 +302,7 @@ fetch("labs.csv")
             institution: cols[2] || "",
             website: cols.slice(3).join(",")
         };
+
     });
 
     renderLabs(allLabs);
@@ -338,15 +322,15 @@ function renderLabs(labs){
             <h3>${lab.pi}</h3>
             <p><strong>${lab.institution}</strong></p>
             <p>${lab.state}</p>
-            ${
-                lab.website
-                ? `<p><a href="${lab.website}" target="_blank">Visit Lab Website</a></p>`
-                : ""
-            }
+            ${lab.website ?
+            `<a href="${lab.website}" target="_blank">Lab Website</a>`
+            : ""}
         `;
 
         labList.appendChild(card);
+
     });
+
 }
 
 searchBox.addEventListener("input", function(){
