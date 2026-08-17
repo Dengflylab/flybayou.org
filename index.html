@@ -1,14 +1,294 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Fly Bayou</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Fly Bayou | Drosophila Research Community</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    line-height:1.6;
+    color:#333;
+}
+
+header{
+    background:linear-gradient(135deg,#003366,#0077b6);
+    color:white;
+    text-align:center;
+    padding:90px 20px;
+}
+
+header h1{
+    font-size:3rem;
+    margin-bottom:10px;
+}
+
+header p{
+    font-size:1.2rem;
+}
+
+nav{
+    background:#002244;
+    position:sticky;
+    top:0;
+    z-index:1000;
+}
+
+nav ul{
+    display:flex;
+    justify-content:center;
+    list-style:none;
+    flex-wrap:wrap;
+}
+
+nav li{
+    margin:0;
+}
+
+nav a{
+    display:block;
+    color:white;
+    text-decoration:none;
+    padding:15px 20px;
+}
+
+nav a:hover{
+    background:#005a8d;
+}
+
+.container{
+    max-width:1200px;
+    margin:auto;
+    padding:60px 20px;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:40px;
+    color:#003366;
+}
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+}
+
+.card{
+    background:white;
+    border-radius:10px;
+    padding:25px;
+    box-shadow:0 2px 10px rgba(0,0,0,0.1);
+}
+
+.highlight{
+    background:#f5f9fc;
+}
+
+.community-list{
+    columns:2;
+}
+
+footer{
+    background:#002244;
+    color:white;
+    text-align:center;
+    padding:30px;
+}
+
+a{
+    color:#0077b6;
+}
+
+@media(max-width:768px){
+
+.community-list{
+    columns:1;
+}
+
+header h1{
+    font-size:2rem;
+}
+
+}
+
+</style>
 </head>
+
 <body>
 
-<h1>Fly Bayou</h1>
+<header>
+    <h1>Fly Bayou</h1>
+    <p>A Community of Drosophila Researchers Across the Southern United States</p>
+</header>
 
-<p>GitHub Pages is working!</p>
+<nav>
+<ul>
+<li><a href="#about">About</a></li>
+<li><a href="#community">>#eventsEvents</a></li>
+<li>#contactContact</a></li>
+</ul>
+</nav>
+
+<section id="about" class="container">
+
+<h2 class="section-title">About Fly Bayou</h2>
+
+<p>
+Fly Bayou began as a local Drosophila research meeting connecting laboratories
+in Louisiana. Since its founding in 2020, the community has expanded to more than
+30 laboratories across multiple states. Monthly virtual meetings provide
+opportunities to share discoveries, discuss new techniques, and foster scientific
+collaboration.
+</p>
+
+<br>
+
+<h3>Current Organizer</h3>
+
+<p>
+Dr. Jun-Yuan Ji<br>
+Tulane University School of Medicine<br>
+<a hrefne.eduji@tulane.edu</a>
+</p>
+
+<br>
+
+<h3>Past Organizers</h3>
+
+<ul>
+<li>2024-2025: Dr. Wan Hee Yoon (OMRF)</li>
+<li>2023-2024: Dr. Xiaolin Tian (LSU Health)</li>
+<li>2021-2023: Dr. SeYeon Chung (LSU)</li>
+<li>2020-2021: Dr. Wu-Min Deng (Tulane)</li>
+</ul>
+
+</section>
+
+<section id="community" class="container highlight">
+
+<h2 class="section-title">Research Community</h2>
+
+<div class="cards">
+
+<div class="card">
+
+<h3>Louisiana Institutions</h3>
+
+<ul>
+<li>Tulane University</li>
+<li>Louisiana State University</li>
+<li>LSU Health New Orleans</li>
+<li>University of New Orleans</li>
+<li>University of Louisiana at Lafayette</li>
+<li>LSU Veterinary School</li>
+</ul>
+
+</div>
+
+<div class="card">
+
+<h3>Regional Network</h3>
+
+<ul>
+<li>Alabama</li>
+<li>Arizona</li>
+<li>Arkansas</li>
+<li>Florida</li>
+<li>Kansas</li>
+<li>Missouri</li>
+<li>New Mexico</li>
+<li>North Carolina</li>
+<li>Oklahoma</li>
+<li>Texas</li>
+<li>Utah</li>
+</ul>
+
+</div>
+
+<div class="card">
+
+<h3>Monthly Meetings</h3>
+
+<p>
+Fly Bayou hosts monthly virtual seminars featuring faculty,
+postdoctoral researchers, graduate students, and trainees
+from participating laboratories.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<section id="events" class="container">
+
+<h2 class="section-title">Recent Events</h2>
+
+<div class="cards">
+
+<div class="card">
+<h3>2025 Fly Bayou Symposium</h3>
+<p>New Orleans, Louisiana</p>
+</div>
+
+<div class="card">
+<h3>2024 Fly Meeting</h3>
+<p>Washington, DC</p>
+</div>
+
+<div class="card">
+<h3>2023 Fly Bayou Symposium</h3>
+<p>Baton Rouge, Louisiana</p>
+</div>
+
+</div>
+
+</section>
+
+<section id="contact" class="container highlight">
+
+<h2 class="section-title">Contact</h2>
+
+<p>
+Interested in joining Fly Bayou or presenting at an upcoming meeting?
+</p>
+
+<br>
+
+<p>
+Email:
+ji@tulane.eduji@tulane.edu</a>
+</p>
+
+</section>
+
+<footer>
+
+<h3>Fly Bayou</h3>
+
+<p>
+Connecting Drosophila researchers through collaboration,
+communication, and community.
+</p>
+
+<br>
+
+<p>
+© 2026 Fly Bayou
+</p>
+
+</footer>
 
 </body>
 </html>
-`
