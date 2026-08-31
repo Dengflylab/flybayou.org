@@ -137,6 +137,106 @@ footer{
     padding:30px;
 }
 
+/* Event Gallery Styles */
+.event-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 28px;
+}
+
+.event-card {
+    background: white;
+    border-radius: 14px;
+    box-shadow: 0 2px 12px rgba(0,0,0,.1);
+    overflow: hidden;
+}
+
+.slideshow {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4/3;
+    background: #001a33;
+    overflow: hidden;
+}
+
+.slideshow img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.slideshow img.active {
+    opacity: 1;
+}
+
+.slide-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0,0,0,0.45);
+    color: white;
+    border: none;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    font-size: 16px;
+    cursor: pointer;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+}
+
+.slide-btn:hover {
+    background: rgba(0,0,0,0.7);
+}
+
+.slide-btn.prev { left: 10px; }
+.slide-btn.next { right: 10px; }
+
+.slide-dots {
+    position: absolute;
+    bottom: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 6px;
+    z-index: 2;
+}
+
+.slide-dots span {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.5);
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.slide-dots span.active {
+    background: white;
+}
+
+.event-info {
+    padding: 18px 20px;
+}
+
+.event-info h3 {
+    color: #003366;
+    margin-bottom: 6px;
+    font-size: 1.05rem;
+}
+
+.event-info p {
+    color: #666;
+    font-size: 0.9rem;
+}
+
 @media(max-width:768px){
 
 header h1{
@@ -228,22 +328,63 @@ placeholder="Search by PI, Institution, or State">
 
 <h2 class="section-title">Recent Events</h2>
 
-<div class="cards">
+<div class="event-cards">
 
-<div class="card">
-<h3>2025 Fly Bayou Symposium</h3>
-<p>New Orleans, Louisiana</p>
-</div>
+  <!-- 2025 Fly Bayou Symposium -->
+  <div class="event-card">
+    <div class="slideshow" id="show-2025ip">
+      <img src="photos/2025_ip_01.jpeg" class="active" alt="2025 Fly Bayou Symposium photo 1">
+      <img src="photos/2025_ip_02.png" alt="2025 Fly Bayou Symposium photo 2">
+      <img src="photos/2025_ip_03.png" alt="2025 Fly Bayou Symposium photo 3">
+      <img src="photos/2025_ip_04.jpg" alt="2025 Fly Bayou Symposium photo 4">
+      <button class="slide-btn prev" onclick="moveSlide('show-2025ip',-1)">&#8249;</button>
+      <button class="slide-btn next" onclick="moveSlide('show-2025ip', 1)">&#8250;</button>
+      <div class="slide-dots">
+        <span class="active"></span><span></span><span></span><span></span>
+      </div>
+    </div>
+    <div class="event-info">
+      <h3>2025 Fly Bayou Symposium</h3>
+      <p>New Orleans, Louisiana</p>
+    </div>
+  </div>
 
-<div class="card">
-<h3>Fly Meeting 2025</h3>
-<p>San Diego, California</p>
-</div>
+  <!-- Fly Meeting 2025 San Diego -->
+  <div class="event-card">
+    <div class="slideshow" id="show-sandiego">
+      <img src="photos/2025_San_Diego.png" class="active" alt="Fly Meeting 2025 San Diego">
+      <button class="slide-btn prev" onclick="moveSlide('show-sandiego',-1)" style="display:none"></button>
+      <button class="slide-btn next" onclick="moveSlide('show-sandiego', 1)" style="display:none"></button>
+    </div>
+    <div class="event-info">
+      <h3>Fly Meeting 2025</h3>
+      <p>San Diego, California</p>
+    </div>
+  </div>
 
-<div class="card">
-<h3>2023 Fly Bayou Symposium</h3>
-<p>Baton Rouge, Louisiana</p>
-</div>
+  <!-- 2023 Fly Bayou Symposium -->
+  <div class="event-card">
+    <div class="slideshow" id="show-2023ip">
+      <img src="photos/2023_ip_01.jpg" class="active" alt="2023 Fly Bayou Symposium photo 1">
+      <img src="photos/2023_ip_02.jpg" alt="2023 Fly Bayou Symposium photo 2">
+      <img src="photos/2023_ip_03.jpg" alt="2023 Fly Bayou Symposium photo 3">
+      <img src="photos/2023_ip_04.jpg" alt="2023 Fly Bayou Symposium photo 4">
+      <img src="photos/2023_ip_05.jpg" alt="2023 Fly Bayou Symposium photo 5">
+      <img src="photos/2023_ip_06.jpg" alt="2023 Fly Bayou Symposium photo 6">
+      <img src="photos/2023_ip_07.jpg" alt="2023 Fly Bayou Symposium photo 7">
+      <img src="photos/2023_ip_08.jpg" alt="2023 Fly Bayou Symposium photo 8">
+      <button class="slide-btn prev" onclick="moveSlide('show-2023ip',-1)">&#8249;</button>
+      <button class="slide-btn next" onclick="moveSlide('show-2023ip', 1)">&#8250;</button>
+      <div class="slide-dots">
+        <span class="active"></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span>
+      </div>
+    </div>
+    <div class="event-info">
+      <h3>2023 Fly Bayou Symposium</h3>
+      <p>Baton Rouge, Louisiana</p>
+    </div>
+  </div>
 
 </div>
 
@@ -353,6 +494,34 @@ searchBox.addEventListener("input", function(){
 
 });
 
+</script>
+
+<script>
+function moveSlide(id, dir) {
+    const show = document.getElementById(id);
+    const imgs = show.querySelectorAll('img');
+    const dots = show.querySelectorAll('.slide-dots span');
+    let current = [...imgs].findIndex(img => img.classList.contains('active'));
+    imgs[current].classList.remove('active');
+    if (dots[current]) dots[current].classList.remove('active');
+    current = (current + dir + imgs.length) % imgs.length;
+    imgs[current].classList.add('active');
+    if (dots[current]) dots[current].classList.add('active');
+}
+
+// Click dots to jump to slide
+document.querySelectorAll('.slide-dots span').forEach((dot, i) => {
+    dot.addEventListener('click', function() {
+        const dotsEl = this.parentElement;
+        const show = dotsEl.closest('.slideshow');
+        const imgs = show.querySelectorAll('img');
+        const allDots = dotsEl.querySelectorAll('span');
+        imgs.forEach(img => img.classList.remove('active'));
+        allDots.forEach(d => d.classList.remove('active'));
+        imgs[i] && imgs[i].classList.add('active');
+        this.classList.add('active');
+    });
+});
 </script>
 
 </body>
