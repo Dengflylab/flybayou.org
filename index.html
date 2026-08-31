@@ -510,15 +510,16 @@ function moveSlide(id, dir) {
 }
 
 // Click dots to jump to slide
-document.querySelectorAll('.slide-dots span').forEach((dot, i) => {
+document.querySelectorAll('.slide-dots span').forEach((dot) => {
     dot.addEventListener('click', function() {
         const dotsEl = this.parentElement;
         const show = dotsEl.closest('.slideshow');
         const imgs = show.querySelectorAll('img');
         const allDots = dotsEl.querySelectorAll('span');
+        const localIndex = [...allDots].indexOf(this);
         imgs.forEach(img => img.classList.remove('active'));
         allDots.forEach(d => d.classList.remove('active'));
-        imgs[i] && imgs[i].classList.add('active');
+        if (imgs[localIndex]) imgs[localIndex].classList.add('active');
         this.classList.add('active');
     });
 });
