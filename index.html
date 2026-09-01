@@ -237,6 +237,68 @@ footer{
     font-size: 0.9rem;
 }
 
+/* Lightbox */
+.lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.88);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+}
+
+.lightbox.open {
+    display: flex;
+}
+
+.lightbox img {
+    max-width: 90vw;
+    max-height: 88vh;
+    border-radius: 8px;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.6);
+    object-fit: contain;
+}
+
+.lightbox-close {
+    position: fixed;
+    top: 18px;
+    right: 24px;
+    color: white;
+    font-size: 2.2rem;
+    cursor: pointer;
+    line-height: 1;
+    background: none;
+    border: none;
+    opacity: 0.85;
+}
+
+.lightbox-close:hover { opacity: 1; }
+
+.lightbox-prev,
+.lightbox-next {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    color: white;
+    font-size: 2.5rem;
+    background: rgba(0,0,0,0.35);
+    border: none;
+    cursor: pointer;
+    padding: 10px 16px;
+    border-radius: 50%;
+    opacity: 0.8;
+    line-height: 1;
+}
+
+.lightbox-prev:hover,
+.lightbox-next:hover { opacity: 1; background: rgba(0,0,0,0.6); }
+
+.lightbox-prev { left: 16px; }
+.lightbox-next { right: 16px; }
+
+.slideshow img { cursor: zoom-in; }
+
 @media(max-width:768px){
 
 header h1{
@@ -283,7 +345,7 @@ Connecting Drosophila Researchers Across the United States
 <h2 class="section-title">About Fly Bayou</h2>
 
 <p>
-Founded in 2020 by Dr. Wu-Min Deng and SeYeon Chung, Fly Bayou began as a network connecting Drosophila researchers in New Orleans and Baton Rouge, Louisiana. It has since grown into a vibrant, multi-state community that fosters scientific exchange, collaboration, trainee development, and networking through monthly virtual meetings and biennial in-person meetings.
+Founded in 2020, Fly Bayou began as a network of Drosophila researchers in New Orleans and Baton Rouge, Louisiana. It has since grown into a vibrant, multi-state community that promotes scientific exchange, collaboration, trainee development, and networking through monthly virtual meetings and biennial in-person meetings.
 </p>
 
 <br>
@@ -329,6 +391,19 @@ placeholder="Search by PI, Institution, or State">
 <h2 class="section-title">Recent Events</h2>
 
 <div class="event-cards">
+
+  <!-- Fly Meeting 2026 Chicago -->
+  <div class="event-card">
+    <div class="slideshow" id="show-chicago">
+      <img src="photos/2026_Chicago.jpg" class="active" alt="Fly Meeting 2026 Chicago">
+      <button class="slide-btn prev" onclick="moveSlide('show-chicago',-1)" style="display:none"></button>
+      <button class="slide-btn next" onclick="moveSlide('show-chicago', 1)" style="display:none"></button>
+    </div>
+    <div class="event-info">
+      <h3>Fly Meeting 2026</h3>
+      <p>Chicago, Illinois</p>
+    </div>
+  </div>
 
   <!-- 2025 Fly Bayou Symposium -->
   <div class="event-card">
@@ -521,6 +596,62 @@ document.querySelectorAll('.slide-dots span').forEach((dot) => {
         allDots.forEach(d => d.classList.remove('active'));
         if (imgs[localIndex]) imgs[localIndex].classList.add('active');
         this.classList.add('active');
+    });
+});
+
+// Lightbox
+let lbImgs = [];
+let lbIndex = 0;
+
+const lightbox = document.createElement('div');
+lightbox.className = 'lightbox';
+lightbox.innerHTML = `
+  <button class="lightbox-close">&times;</button>
+  <button class="lightbox-prev">&#8249;</button>
+  <img src="" alt="Enlarged photo">
+  <button class="lightbox-next">&#8250;</button>
+`;
+document.body.appendChild(lightbox);
+
+const lbImg = lightbox.querySelector('img');
+
+function openLightbox(imgs, index) {
+    lbImgs = imgs;
+    lbIndex = index;
+    lbImg.src = lbImgs[lbIndex];
+    lightbox.classList.add('open');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox() {
+    lightbox.classList.remove('open');
+    document.body.style.overflow = '';
+}
+
+function lbMove(dir) {
+    lbIndex = (lbIndex + dir + lbImgs.length) % lbImgs.length;
+    lbImg.src = lbImgs[lbIndex];
+}
+
+lightbox.querySelector('.lightbox-close').addEventListener('click', closeLightbox);
+lightbox.querySelector('.lightbox-prev').addEventListener('click', () => lbMove(-1));
+lightbox.querySelector('.lightbox-next').addEventListener('click', () => lbMove(1));
+lightbox.addEventListener('click', function(e) {
+    if (e.target === lightbox) closeLightbox();
+});
+document.addEventListener('keydown', function(e) {
+    if (!lightbox.classList.contains('open')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowLeft') lbMove(-1);
+    if (e.key === 'ArrowRight') lbMove(1);
+});
+
+// Attach click to all slideshow images
+document.querySelectorAll('.slideshow').forEach(show => {
+    const imgs = [...show.querySelectorAll('img')];
+    const srcs = imgs.map(img => img.src);
+    imgs.forEach((img, i) => {
+        img.addEventListener('click', () => openLightbox(srcs, i));
     });
 });
 </script>
